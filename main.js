@@ -14,7 +14,7 @@ app.post('/search', async (req,res)=>{
     //ket noi den server co dia chi trong url
     let server = await MongoClient.connect(url)
     //truy cap database ATn
-    let dbo = server.db("Assignment")
+    let dbo = server.db("Assignment2")
     //get data
     let products = await dbo.collection("product").find({'name':new RegExp(name, 'i')}).toArray()
     res.render('allProduct',{'products':products})
@@ -24,7 +24,7 @@ app.get('/', async (req,res)=>{
     //ket noi den server co dia chi trong url
     let server = await MongoClient.connect(url)
     //truy cap database ATn
-    let dbo = server.db("Assignment")
+    let dbo = server.db("Assignment2")
     //get data
     let products = await dbo.collection("product").find().toArray()
     let firstProduct = await dbo.collection("product").find().limit(1).toArray()
@@ -34,7 +34,7 @@ app.get('/', async (req,res)=>{
 
 app.get('/delete/:id', async(req, res) => {
     let server = await MongoClient.connect(url)
-    let dbo = server.db("Assignment")
+    let dbo = server.db("Assignment2")
     await dbo.collection('product').deleteOne({_id: mongodb.ObjectId(req.params.id)})
     res.redirect('/')
 })
@@ -57,7 +57,7 @@ app.post('/newProduct', async (req, res)=>{
     //1. kết nối đến server có địa chỉ trong url
     let server = await MongoClient.connect(url)
     //truy cập Database ATN
-    let dbo = server.db("Assignment")
+    let dbo = server.db("Assignment2")
     //insert product vào database
     await dbo.collection("product").insertOne(product)
     //quay lại trang home
