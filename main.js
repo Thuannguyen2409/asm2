@@ -7,7 +7,7 @@ app.set('view engine', 'hbs')
 app.use(express.urlencoded({extended: true}))
 
 var MongoClient = require('mongodb').MongoClient
-var url = 'mongodb://127.0.0.1:27017'
+var url = 'mongodb+srv://thuannguyen24:Thuannguyen24@cluster0.5n9c0.mongodb.net/test'
 
 app.post('/search', async (req,res)=>{
     let name = req.body.txtName
